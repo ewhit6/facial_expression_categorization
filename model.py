@@ -47,8 +47,6 @@ with path.open() as csv_file:
             line_count += 1
     print(f'Processed {line_count} lines.')
 
-# Normalize pixel values to be between 0 and 1
-
 train_labels = np.array(train_labels)
 train_images = np.array(train_images).reshape(-1, 48, 48, 1)
 
