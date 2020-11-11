@@ -15,8 +15,6 @@ test_labels = []
 test_images = []
 
 path = Path(__file__).parent / "fer2013.csv"
-# with path.open() as f:
-# test = list(csv.reader(f))
 
 with path.open() as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
@@ -29,28 +27,27 @@ with path.open() as csv_file:
             if row[2] == 'Training':
                 train_labels.append([int(row[0])])
                 pixel_list = [int(n) for n in row[1].split()]
-                # Do something to the pixels...
                 image = Image.new('L', [48,48], 255)
                 image.putdata(pixel_list)
                 pixels = asarray(image)
                 pixels = pixels.astype('float32')
+                # Normalize pixel values to be between 0 and 1
                 pixels /= 255.0
                 train_images.append(pixels)
             else:
                 test_labels.append([int(row[0])])
                 pixel_list = [int(n) for n in row[1].split()]
-                # Do something to the pixels...
                 image = Image.new('L', [48,48], 255)
                 image.putdata(pixel_list)
                 pixels = asarray(image)
                 pixels = pixels.astype('float32')
+                # Normalize pixel values to be between 0 and 1
                 pixels /= 255.0
                 test_images.append(pixels)
             line_count += 1
     print(f'Processed {line_count} lines.')
 
 # Normalize pixel values to be between 0 and 1
-# train_images, test_images = train_images / 255.0, test_images / 255.0
 
 train_labels = np.array(train_labels)
 train_images = np.array(train_images).reshape(-1, 48, 48, 1)
