@@ -8,16 +8,7 @@ checkpoint_path = ".\\training\\cp.ckpt"
 model = create_model()
 model.load_weights(checkpoint_path)
 
-class_names = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
-
-
-
-
-# print(
-#     "This facial expression is most likely {} with a {:.2f} percent confidence."
-#     .format(class_names[np.argmax(score)], 100 * np.max(score))
-# )
-########################################################3
+class_names = ['Neutral' ,'Happiness' ,'Surprise' ,'Sadness' ,'Anger' ,'Disgust' ,'Fear' ,'Contempt' ,'Unknown' ,'NF']
 
 # cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
@@ -27,8 +18,6 @@ video_capture = cv2.VideoCapture(0)
 while True:
     # Capture frame-by-frame
     ret, frame = video_capture.read()
-
-    # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = faceCascade.detectMultiScale(
         frame,

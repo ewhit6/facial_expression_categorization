@@ -3,14 +3,15 @@
 
 from model import *
 
-epochs = 45
+epochs = 100
 
 data = parse_csv_to_nparrays()
 
 train_labels, train_images, test_labels, test_images = data[0], data[1], data[2], data[3]
 
 # Verify the data
-class_names = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+# class_names = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+class_names = ['Neutral' ,'Happiness' ,'Surprise' ,'Sadness' ,'Anger' ,'Disgust' ,'Fear' ,'Contempt' ,'Unknown' ,'NF']
 
 plt.figure(figsize=(10,10))
 for i in range(25):
